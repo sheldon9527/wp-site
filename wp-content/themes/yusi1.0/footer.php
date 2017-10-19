@@ -2,7 +2,7 @@
 <footer class="footer">
     <div class="footer-inner">
         <div class="copyright pull-left">
-         <a href="http://yusi123.com/" title="欲思博客">欲思博客</a> 版权所有，保留一切权利 · <a href="http://yusi123.com/sitemap.xml" title="站点地图">站点地图</a>   ·   基于WordPress构建   © 2011-2014  ·   托管于 <a rel="nofollow" target="_blank" href="http://yusi123.com/go/aliyun">阿里云主机</a> & <a rel="nofollow" target="_blank" href="http://yusi123.com/go/qiniu">七牛云存储</a>
+         <a href="http://wordpress.dev/" title="技术宅">技术宅</a> 版权所有，保留一切权利 · <a href="http://yusi123.com/sitemap.xml" title="站点地图">站点地图</a>   ·   基于WordPress构建   © 2011-2014  ·   托管于 <a rel="nofollow" target="_blank" href="http://wordpress.dev/">阿里云主机</a> & <a rel="nofollow" target="_blank" href="http://yusi123.com/go/qiniu">七牛云存储</a>
         </div>
         <div class="trackcode pull-right">
             <?php if( dopt('d_track_b') ) echo dopt('d_track'); ?>
