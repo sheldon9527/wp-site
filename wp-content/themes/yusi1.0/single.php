@@ -36,7 +36,7 @@ endif ;?>
         <article class="article-content">
             <?php the_content(); ?>
 
-<div class="reward"><div class="reward-button">赏 <span class="reward-code"> <span class="alipay-code"> <img class="alipay-img" src="http://wordpress.me/wp-content/uploads/2018/04/alipy.jpg"><b>支付宝扫码打赏</b> </span> <span class="wechat-code"> <img class="wechat-img" src="http://wordpress.me/wp-content/uploads/2018/04/weixin.jpg"><b>微信打赏</b> </span> </span></div><p class="reward-notice">如果文章对您有帮助，欢迎移至上方按钮打赏<b>码农</b></p></div>
+<?php echo orwei_ds_alipay_wechat();?>
 
 <?php wp_link_pages(array('before' => '<div class="fenye">', 'after' => '', 'next_or_number' => 'next', 'previouspagelink' => '<span>上一页</span>', 'nextpagelink' => "")); ?>   <?php wp_link_pages(array('before' => '', 'after' => '', 'next_or_number' => 'number', 'link_before' =>'<span>', 'link_after'=>'</span>')); ?>   <?php wp_link_pages(array('before' => '', 'after' => '</div>', 'next_or_number' => 'next', 'previouspagelink' => '', 'nextpagelink' => "<span>下一页</span>")); ?>
 
