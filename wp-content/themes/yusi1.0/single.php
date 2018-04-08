@@ -21,13 +21,13 @@
                 <span class="muted"><i class="fa fa-eye"></i> <?php deel_views('℃'); ?></span>
                 <?php if (comments_open()) {
                     echo '<span class="muted"><i class="fa fa-comments-o"></i> <a href="'.get_comments_link().'">'.get_comments_number('去', '1', '%').'评论</a></span>';
-} ?>
+                } ?>
 
             </div>
         </header>
 <?php if (dopt('d_adpost_01_b')) {
-    echo '<div class="banner banner-post">'.dopt('d_adpost_01').'</div>';
-} ?>
+                    echo '<div class="banner banner-post">'.dopt('d_adpost_01').'</div>';
+                } ?>
 <?php if (wp_is_mobile()) :
 ?><?php if (dopt('Mobiled_adpost_01_b')) {
     echo '<div class="banner-post">'.dopt('Mobiled_adpost_01').'</div>';
@@ -35,15 +35,16 @@
 endif ;?>
         <article class="article-content">
             <?php the_content(); ?>
-<?php echo orwei_ds_alipay_wechat();?>
+
+<div class="reward"><div class="reward-button">赏 <span class="reward-code"> <span class="alipay-code"> <img class="alipay-img" src="http://wordpress.me/wp-content/uploads/2018/04/alipy.jpg"><b>支付宝扫码打赏</b> </span> <span class="wechat-code"> <img class="wechat-img" src="http://wordpress.me/wp-content/uploads/2018/04/weixin.jpg"><b>微信打赏</b> </span> </span></div><p class="reward-notice">如果文章对您有帮助，欢迎移至上方按钮打赏<b>码农</b></p></div>
 
 <?php wp_link_pages(array('before' => '<div class="fenye">', 'after' => '', 'next_or_number' => 'next', 'previouspagelink' => '<span>上一页</span>', 'nextpagelink' => "")); ?>   <?php wp_link_pages(array('before' => '', 'after' => '', 'next_or_number' => 'number', 'link_before' =>'<span>', 'link_after'=>'</span>')); ?>   <?php wp_link_pages(array('before' => '', 'after' => '</div>', 'next_or_number' => 'next', 'previouspagelink' => '', 'nextpagelink' => "<span>下一页</span>")); ?>
 
 <div class="article-social">
             <a href="javascript:;" data-action="ding" data-id="<?php the_ID(); ?>" id="Addlike" class="action<?php if (isset($_COOKIE['bigfa_ding_'.$post->ID])) {
-                echo ' actived';
+    echo ' actived';
 }?>"><i class="fa fa-heart-o"></i>喜欢 (<span class="count"><?php if (get_post_meta($post->ID, 'bigfa_ding', true)) {
-                echo get_post_meta($post->ID, 'bigfa_ding', true);
+    echo get_post_meta($post->ID, 'bigfa_ding', true);
 } else {
     echo '0';
 }?></span>)</a><?php if (dopt('d_bdshare_b')) {
@@ -69,11 +70,11 @@ endif ;?>
 } ?><?php
 endif ;?>
         <?php if (dopt('d_adpost_02_b')) {
-            echo '<div id="comment-ad" class="banner banner-related">'.dopt('d_adpost_02').'</div>';
+    echo '<div id="comment-ad" class="banner banner-related">'.dopt('d_adpost_02').'</div>';
 } ?>
         <?php comments_template('', true); ?>
         <?php if (dopt('d_adpost_03_b')) {
-            echo '<div class="banner banner-comment">'.dopt('d_adpost_03').'</div>';
+    echo '<div class="banner banner-comment">'.dopt('d_adpost_03').'</div>';
 } ?>
     </div>
 </div>
