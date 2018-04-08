@@ -208,7 +208,7 @@ function deel_strimwidth($str, $start, $width, $trimmarker)
 
 function dopt($e)
 {
-        return stripslashes(get_option($e));
+    return stripslashes(get_option($e));
 }
 
 if (! function_exists('deel_views')) :
@@ -229,10 +229,10 @@ if (! function_exists('deel_views')) :
 
     function deel_views($after = '')
     {
-          global $post;
-          $post_ID = $post->ID;
-          $views = (int)get_post_meta($post_ID, 'views', true);
-          echo $views, $after;
+        global $post;
+        $post_ID = $post->ID;
+        $views = (int)get_post_meta($post_ID, 'views', true);
+        echo $views, $after;
     }
 endif;
 //baidu分享
@@ -317,7 +317,7 @@ function deel_description()
             $text = $post->post_content;
         }
         $description = trim(str_replace(array( "\r\n", "\r", "\n", "　", " "), " ", str_replace("\"", "'", strip_tags($text))));
-        if (!( $description )) {
+        if (!($description)) {
             $description = $blog_name . "-" . trim(wp_title('', false));
         }
     } elseif (is_home()) {
@@ -345,7 +345,7 @@ function hide_admin_bar($flag)
 //最新发布加new 单位'小时'
 function deel_post_new($timer = '48')
 {
-    $t=( strtotime(date("Y-m-d H:i:s"))-strtotime($post->post_date) )/3600;
+    $t=(strtotime(date("Y-m-d H:i:s"))-strtotime($post->post_date))/3600;
     if ($t < $timer) {
         echo "<i>new</i>";
     }
@@ -471,7 +471,7 @@ function timeago($ptime)
     if ($etime < 1) {
         return '刚刚';
     }
-    $interval = array (
+    $interval = array(
         12 * 30 * 24 * 60 * 60  =>  '年前 ('.date('Y-m-d', $ptime).')',
         30 * 24 * 60 * 60       =>  '个月前 ('.date('m-d', $ptime).')',
         7 * 24 * 60 * 60        =>  '周前 ('.date('m-d', $ptime).')',
@@ -507,8 +507,8 @@ function deel_comment_list($comment, $args, $depth)
     }
     //信息
     echo '<div class="c-meta">';
-        echo '<span class="c-author">'.get_comment_author_link().'</span>';
-        echo get_comment_time('Y-m-d H:i ');
+    echo '<span class="c-author">'.get_comment_author_link().'</span>';
+    echo get_comment_time('Y-m-d H:i ');
     echo time_ago();
     if ($comment->comment_approved !== '0') {
         echo comment_reply_link(array_merge($args, array('add_below' => 'div-comment', 'depth' => $depth, 'max_depth' => $args['max_depth'] )));
@@ -572,7 +572,7 @@ function refused_spam_comments($comment_data)
     if (preg_match($jpattern, $comment_data['comment_content'])) {
         err('日文滚粗！Japanese Get out！日本語出て行け！ You should type some Chinese word！');
     }
-    return( $comment_data );
+    return($comment_data);
 }
 if (dopt('d_spamComments_b')) {
     add_filter('preprocess_comment', 'refused_spam_comments');
@@ -658,14 +658,14 @@ function Yusi_is_mobile()
 {
     if (empty($_SERVER['HTTP_USER_AGENT'])) {
         return false;
-    } elseif (( strpos($_SERVER['HTTP_USER_AGENT'], 'Mobile') !== false  && strpos($_SERVER['HTTP_USER_AGENT'], 'iPad') === false) // many mobile devices (all iPh, etc.)
+    } elseif ((strpos($_SERVER['HTTP_USER_AGENT'], 'Mobile') !== false  && strpos($_SERVER['HTTP_USER_AGENT'], 'iPad') === false) // many mobile devices (all iPh, etc.)
         || strpos($_SERVER['HTTP_USER_AGENT'], 'Android') !== false
         || strpos($_SERVER['HTTP_USER_AGENT'], 'Silk/') !== false
         || strpos($_SERVER['HTTP_USER_AGENT'], 'Kindle') !== false
         || strpos($_SERVER['HTTP_USER_AGENT'], 'BlackBerry') !== false
         || strpos($_SERVER['HTTP_USER_AGENT'], 'Opera Mini') !== false
-        || strpos($_SERVER['HTTP_USER_AGENT'], 'Opera Mobi') !== false ) {
-            return true;
+        || strpos($_SERVER['HTTP_USER_AGENT'], 'Opera Mobi') !== false) {
+        return true;
     } else {
         return false;
     }
@@ -723,4 +723,10 @@ function post_thumbnail_src()
         }
     };
     echo $post_thumbnail_src;
+}
+
+//打赏
+function orwei_ds_alipay_wechat()
+{
+    echo '<div class="reward"><div class="reward-button">赏 <span class="reward-code"> <span class="alipay-code"> <img class="alipay-img" src="http://wordpress.me/wp-content/uploads/2018/04/alipy.jpg"><b>支付宝扫码打赏</b> </span> <span class="wechat-code"> <img class="wechat-img" src="http://wordpress.me/wp-content/uploads/2018/04/weixin.jpg"><b>微信打赏</b> </span> </span></div><p class="reward-notice">如果文章对您有帮助，欢迎移至上方按钮打赏老蒋</p></div>';
 }
