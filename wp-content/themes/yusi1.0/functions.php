@@ -728,5 +728,5 @@ function post_thumbnail_src()
 //打赏
 function orwei_ds_alipay_wechat()
 {
-    echo '<div class="reward"><div class="reward-button"><span class="reward-code"><b>支付宝打赏</b><img src="http://wordpress.me/wp-content/uploads/2018/04/alipy-150x150.jpg"><b>&nbsp;&nbsp;&nbsp;微信打赏</b> <img src="http://wordpress.me/wp-content/uploads/2018/04/weixin-150x150.jpg"></div><p class="reward-notice">如果文章对您有帮助，欢迎移至上方按钮打赏码农</p></div>';
+    echo '<div class="reward"><div class="reward-button"><span class="reward-code"><b>支付宝打赏</b><img src="http://wordpress.me/wp-content/uploads/2018/04/alipy-150x150.jpg"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;微信打赏</b> <img src="http://wordpress.me/wp-content/uploads/2018/04/weixin-150x150.jpg"></div><p class="reward-notice">如果文章对您有帮助，欢迎移至上方按钮打赏码农</p></div>';
 }
