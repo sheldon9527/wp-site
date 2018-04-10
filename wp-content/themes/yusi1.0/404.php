@@ -1,6 +1,7 @@
 <?php get_header(); ?>
 <div class="content-wrap">
 	<?php
+    date_default_timezone_set("PRC");
     for ($t=0;$t<360;$t++) {
         $y=2*cos($t)-cos(2*$t);
         $x=2*sin($t)-sin(2*$t);
@@ -19,7 +20,7 @@
      $black=imagecolorallocate($im, 255, 255, 255);
      $red=imagecolorallocate($im, 255, 0, 0);//设置颜色
      imagepolygon($im, $str, 360, $red);
-     imagestring($im, 5, 130, 160, date("Y-m-d h:i:s"), $red);
+     imagestring($im, 5, 130, 160, date("Y-m-d H:i:s"), $red);
      imagestring($im, 5, 130, 190, "Content is missing ", $red);
      imagestring($im, 5, 195, 220, "But ", $red);
      imagestring($im, 5, 165, 250, "i love you ", $red);
