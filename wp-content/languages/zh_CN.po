@@ -6338,7 +6338,7 @@ msgstr "错误：这不是有效的feed模板。"
 
 #: wp-includes/post-template.php:1602
 msgid "This content is password protected. To view it please enter your password below:"
-msgstr "这是一篇受密码保护的文章，您需要提供访问密码："
+msgstr "这是一篇受密码保护的文章，您需要提供访问密码(扫码支付2元即可得到密码)："
 
 #. translators: This is a comma-separated list of very common words that should
 #. be excluded from a search, like a, an, and the. These are usually called
