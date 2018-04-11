@@ -728,6 +728,6 @@ function post_thumbnail_src()
 //打赏
 function orwei_ds_alipay_wechat()
 {
-    echo '<div><div><span><b>支付宝打赏</b><img src="http://www.helshe.com/wp-content/uploads/2018/04/alipy-1-150x150.jpg"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;微信打赏</b> <img src="http://www.helshe.com/wp-content/uploads/2018/04/weixin-1-150x150.jpg"></div><p><p></p>如果文章对您有帮助，欢迎移至上方按钮打赏<b>码农</b></p></div>';
+    echo '<div><div><span><b>支付宝打赏</b><a href="http://www.helshe.com/wp-content/uploads/2018/04/alipy-1.jpg"><img src="http://www.helshe.com/wp-content/uploads/2018/04/alipy-1-150x150.jpg"></a><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;微信打赏</b> <a href="http://www.helshe.com/wp-content/uploads/2018/04/weixin-1.jpg"><img src="http://www.helshe.com/wp-content/uploads/2018/04/weixin-1-150x150.jpg"></a></div><p><p></p>如果文章对您有帮助，欢迎移至上方按钮打赏<b>码农</b></p></div>';
     // echo '<div class="reward"><div class="reward-button">赏 <span class="reward-code"> <span class="alipay-code"> <img class="alipay-img" src="http://www.helshe.com/wp-content/uploads/2018/04/alipy-1-150x150.jpg"><b>支付宝打赏</b> </span> <span class="wechat-code"> <img class="wechat-img" src="http://www.helshe.com/wp-content/uploads/2018/04/weixin-1-150x150.jpg"><b>微信打赏</b> </span> </span></div><p class="reward-notice">如果文章对您有帮助，欢迎移至上方按钮打赏<b>码农</b></p></div>';
 }
