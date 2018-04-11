@@ -11,7 +11,7 @@
  * upgrade Markdown: allow filtering $preserve_shortcodes (#5573)[https://github.com/Automattic/jetpack/pull/5573]
  */
 
-class WPCom_GHF_Markdown_Parser extends MarkdownExtra_Parser {
+class WPCom_GHF_Markdown_Parser_Editormd extends MarkdownExtra_Parser_Editormd {
 
 	/**
 	 * Hooray somewhat arbitrary numbers that are fearful of 1.0.x.
@@ -72,7 +72,7 @@ class WPCom_GHF_Markdown_Parser extends MarkdownExtra_Parser {
 		* @param boolean $preserve_shortcodes Defaults to $this->preserve_shortcodes.
 		*/
 		$this->preserve_shortcodes = apply_filters( 'jetpack_markdown_preserve_shortcodes', $this->preserve_shortcodes ) && function_exists( 'get_shortcode_regex' );
-		$this->preserve_latex      = function_exists( 'latex_markup' );
+		$this->preserve_latex      = function_exists( 'latex_markup_editormd' );
 		$this->strip_paras         = function_exists( 'wpautop' );
 
 		parent::__construct();
@@ -318,7 +318,7 @@ class WPCom_GHF_Markdown_Parser extends MarkdownExtra_Parser {
 		// If we're at least at 1.2.8, native fenced code blocks are in.
 		// Below is just copied from it in case we somehow got loaded on
 		// top of someone else's Markdown Extra
-		if ( version_compare( MARKDOWNEXTRA_VERSION, '1.2.8', '>=' ) )
+		if ( version_compare( MARKDOWNEXTRA_VERSION_EDITOR, '1.2.8', '>=' ) )
 			return parent::doFencedCodeBlocks( $text );
 
 		#
@@ -378,7 +378,7 @@ class WPCom_GHF_Markdown_Parser extends MarkdownExtra_Parser {
 	public function _doFencedCodeBlocks_callback( $matches ) {
 		// in case we have some escaped leading hashes right at the start of the block
 		$matches[4] = $this->restore_leading_hash( $matches[4] );
-		// just MarkdownExtra_Parser if we're not going ultra-deluxe
+		// just MarkdownExtra_Parser_Editormd if we're not going ultra-deluxe
 		if ( ! $this->use_code_shortcode ) {
 			return parent::_doFencedCodeBlocks_callback( $matches );
 		}

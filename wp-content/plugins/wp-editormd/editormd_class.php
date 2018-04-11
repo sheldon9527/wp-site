@@ -78,7 +78,7 @@ class editormd {
                         flowChart: <?php paf( 'support_flowchart' ) == 1 ? print( "true" ) : print( "false" ) ?>, //FlowChart流程图
                         sequenceDiagram: <?php paf( 'support_sequence' ) == 1 ? print( "true" ) : print( "false" ) ?>,//SequenceDiagram时序图
                         taskList: <?php paf( 'task_list' ) == 1 ? print( "true" ) : print( "false" ) ?>,//task lists
-                        path: "<?php echo paf( 'editormd_library' ) ?>/lib/", //资源路径
+                        path: "<?php echo WP_EDITORMD_PLUGIN_URL ?>/Editor.md/lib/", //资源路径
                         placeholder: "<?php echo __( "Enjoy Markdown! coding now...", "editormd" ) ?>",
                         toolbarIcons: function () {
                             // Or return editormd.toolbarModes[name]; // full, simple, mini
@@ -88,7 +88,7 @@ class editormd {
                                 "bold", "del", "italic", "quote", "ucwords", "uppercase", "lowercase", "|",
                                 "h1", "h2", "h3", "h4", "h5", "h6", "|",
                                 "list-ul", "list-ol", "hr", "|",
-                                "link", "reference-link", "image", "code", "preformatted-text", "code-block", "table", "datetime", "html-entities", "pagebreak", <?php paf( 'support_emoji' ) == 1 ? print( "\"emoji\"," ) : print( "" ); ?> "toc", "|",
+                                "link", "reference-link", "image", "code", "preformatted-text", "code-block", "table", "datetime", "html-entities", "more", "pagebreak", <?php paf( 'support_emoji' ) == 1 ? print( "\"emoji\"," ) : print( "" ); ?> "toc", "|",
                                 "goto-line", "watch", "preview", "fullscreen", "clear", "search", "|",
                                 "help", "info"
                             ];
@@ -105,7 +105,8 @@ class editormd {
                         },
                         //自定义工具栏
                         toolbarIconsClass: {
-                            toc: "fa-list-alt"  // 指定一个FontAawsome的图标类
+                            toc: "fa-list-alt",  // 指定一个FontAawsome的图标类
+                            more: "fa-ellipsis-h"
                         },
                         // 自定义工具栏按钮的事件处理
                         toolbarHandlers: {
@@ -117,11 +118,15 @@ class editormd {
                              */
                             toc: function (cm, icon, cursor, selection) {
                                 cm.replaceSelection("[toc]");
+                            },
+                            more: function (cm, icon, cursor, selection) {
+                                cm.replaceSelection("\r\n<!--more-->\r\n");
                             }
                         },
                         lang: {
                             toolbar: {
-                                toc: "<?php echo __( "The Table Of Contents", "editormd" ) ?>"
+                                toc: "<?php echo __( "The Table Of Contents", "editormd" ) ?>",
+                                more: "<?php echo __( "More" )?>"
                             }
                         }
                     });
@@ -138,12 +143,12 @@ class editormd {
                     htmlDom.id = "htmlDom";
                     htmlDom.innerHTML = html;
                     document.body.appendChild(htmlDom);
-                    var dom =  window.document.getElementById("htmlDom").childNodes[0];
+                    var dom = window.document.getElementById("htmlDom").childNodes[0];
                     var markdownSrc;
-                    switch ( dom.localName ) {
+                    switch (dom.localName) {
                         case "a":
-                            if ( dom.childNodes[0].localName === "img" ) {
-                                markdownSrc = '[![]('+ dom.childNodes[0].src +')]('+ dom.href +')';
+                            if (dom.childNodes[0].localName === "img") {
+                                markdownSrc = '[![](' + dom.childNodes[0].src + ')](' + dom.href + ')';
                             } else {
                                 markdownSrc = '[' + dom.innerText + '](' + dom.href + ')';
                             }
@@ -183,7 +188,7 @@ class editormd {
 				/*图像粘贴配置脚本*/
 				if ( paf( 'imagepaste' ) == 1 ) {
 					echo "
-                    //监听图像粘贴事件
+				    //监听图像粘贴事件
                     $(\"#wp-content-editor-container\").on('paste', function (event) {
                         event = event.originalEvent;
                         var cbd = window.clipboardData || event.clipboardData; //兼容ie||chrome
@@ -247,7 +252,7 @@ class editormd {
                         localStorage.setItem(\"wp_editormd\",\"true\");
                     };
                     <!--End-->
-                    ";
+				    ";
 				}
 				?>
             });
@@ -259,24 +264,24 @@ class editormd {
 	public function add_admin_js() {
 		wp_deregister_script( 'media-upload' );//禁止加载多媒体脚本(减少对编辑器的干扰);
 		wp_enqueue_script( 'jqueryjs', paf( 'jquery_library' ) . '/jquery.min.js', array(), WP_EDITORMD_PLUGIN_VERSION, true );
-		wp_enqueue_script( 'editormd_js', paf( 'editormd_library' ) . '/js/editormd.min.js', array(), WP_EDITORMD_PLUGIN_VERSION, true );
+		wp_enqueue_script( 'editormd_js', WP_EDITORMD_PLUGIN_URL . '/Editor.md/js/editormd.min.js', array(), WP_EDITORMD_PLUGIN_VERSION, true );
 
 		//载入国际化语言资源文件
 		$lang = get_bloginfo( 'language' );
 		switch ( $lang ) {
 			case 'zh-TW':
-				wp_enqueue_script( 'lang_tw', paf( 'editormd_library' ) . '/lib/languages/zh-tw.js', array(), WP_EDITORMD_PLUGIN_VERSION, true );//载入台湾语言资源库
+				wp_enqueue_script( 'lang_tw', WP_EDITORMD_PLUGIN_URL . '/Editor.md/lib/languages/zh-tw.js', array(), WP_EDITORMD_PLUGIN_VERSION, true );//载入台湾语言资源库
 				break;
 			case 'zh-HK':
-				wp_enqueue_script( 'lang_hk', paf( 'editormd_library' ) . '/lib/languages/zh-hk.js', array(), WP_EDITORMD_PLUGIN_VERSION, true );//载入港澳语言资源库
+				wp_enqueue_script( 'lang_hk', WP_EDITORMD_PLUGIN_URL . '/Editor.md/lib/languages/zh-hk.js', array(), WP_EDITORMD_PLUGIN_VERSION, true );//载入港澳语言资源库
 				break;
 			case 'zh-CN':
 				break;
 			case 'en-US':
-				wp_enqueue_script( 'lang_us', paf( 'editormd_library' ) . '/lib/languages/en.js', array(), WP_EDITORMD_PLUGIN_VERSION, true );//载入美国英语语言资源库
+				wp_enqueue_script( 'lang_us', WP_EDITORMD_PLUGIN_URL . '/Editor.md/lib/languages/en.js', array(), WP_EDITORMD_PLUGIN_VERSION, true );//载入美国英语语言资源库
 				break;
 			default:
-				wp_enqueue_script( 'lang_us', paf( 'editormd_library' ) . '/lib/languages/en.js', array(), WP_EDITORMD_PLUGIN_VERSION, true );//默认载入美国英语语言资源库
+				wp_enqueue_script( 'lang_us', WP_EDITORMD_PLUGIN_URL . '/Editor.md/lib/languages/en.js', array(), WP_EDITORMD_PLUGIN_VERSION, true );//默认载入美国英语语言资源库
 				break;
 		}
 	}
@@ -284,25 +289,45 @@ class editormd {
 	//载入Style样式文件
 	public function add_admin_style() {
 		wp_deregister_style( 'media-upload' );
-		wp_enqueue_style( 'editormd_css', paf( 'editormd_library' ) . '/css/editormd.min.css', array(), WP_EDITORMD_PLUGIN_VERSION, 'all' );
+		wp_enqueue_style( 'editormd_css', WP_EDITORMD_PLUGIN_URL . '/Editor.md/css/editormd.min.css', array(), WP_EDITORMD_PLUGIN_VERSION, 'all' );
 	}
 
 	public function add_admin_head() {
 		?>
         <style type="text/css" rel="stylesheet">
-            .editormd_wrap input#submit{border:none}
-            .markdown-body img.emoji{height:24px!important;width:24px!important}
-            .markdown-body h2{font-size:1.75em!important;line-height:1.225!important;padding:0 0 .3em 0!important}
-            .markdown-body.editormd-preview-container ul{list-style:initial}
-            .markdown-body.editormd-preview-container ol{margin-left:0!important}
-            .wrap a:active,.wrap a:hover,.wrap a:link,.wrap a:visited{text-decoration:none}
+            .editormd_wrap input#submit {
+                border: none
+            }
+
+            .markdown-body img.emoji {
+                height: 24px !important;
+                width: 24px !important
+            }
+
+            .markdown-body h2 {
+                font-size: 1.75em !important;
+                line-height: 1.225 !important;
+                padding: 0 0 .3em 0 !important
+            }
+
+            .markdown-body.editormd-preview-container ul {
+                list-style: initial
+            }
+
+            .markdown-body.editormd-preview-container ol {
+                margin-left: 0 !important
+            }
+
+            .wrap a:active, .wrap a:hover, .wrap a:link, .wrap a:visited {
+                text-decoration: none
+            }
         </style>
 		<?php
 	}
 
 	public function customize_prism() {
-		wp_enqueue_style( 'prismCSS', paf('customize_highlight_style') . '', array(), WP_EDITORMD_PLUGIN_VERSION, 'all' );
-		wp_enqueue_script( 'prismJS', paf('customize_highlight_javascript') . '', array(), WP_EDITORMD_PLUGIN_VERSION, 'true'  );
+		wp_enqueue_style( 'prismCSS', paf( 'customize_highlight_style' ) . '', array(), WP_EDITORMD_PLUGIN_VERSION, 'all' );
+		wp_enqueue_script( 'prismJS', paf( 'customize_highlight_javascript' ) . '', array(), WP_EDITORMD_PLUGIN_VERSION, 'true' );
 	}
 
 	public function latex_enqueue_scripts() {
@@ -321,7 +346,7 @@ class editormd {
 		wp_enqueue_script( 'jqueryjs', paf( 'jquery_library' ) . '/jquery.min.js', array(), WP_EDITORMD_PLUGIN_VERSION, true );
 		wp_enqueue_script( 'underscore_js', paf( 'underscore_library' ) . '/underscore.min.js', array(), WP_EDITORMD_PLUGIN_VERSION, true );
 		wp_enqueue_script( 'raphaeljs', paf( 'raphael_library' ) . '/raphael.min.js', array(), WP_EDITORMD_PLUGIN_VERSION, true );
-		wp_enqueue_script( 'sequence_js', paf( 'sequence_library' ) . '/sequence-diagram-min.js', array(), WP_EDITORMD_PLUGIN_VERSION, true );
+		wp_enqueue_script( 'sequence_js', paf( 'sequence_library' ) . '/sequence-diagram.min.js', array(), WP_EDITORMD_PLUGIN_VERSION, true );
 	}
 
 	//前端Emoji表情
@@ -343,6 +368,28 @@ class editormd {
                     }
                 });
                 emojify.run();
+            }
+        </script>
+		<?php
+	}
+
+	public function mobile_code_javascript() {
+		?>
+        <script type="text/javascript" charset="UTF-8" defer="defer">
+            window.onload = function () {
+                if (navigator.userAgent.match(/(iPhone|iPod|Android|ios)/i)) {
+                    $("i.fa-eye-slash").attr("class", "fa fa-eye");
+                    $(".editormd-preview-theme-default")[0].style.display = "none";
+                    $(".CodeMirror.cm-s-default.CodeMirror-wrap")[0].style.width = "100%";
+                    $(".CodeMirror.cm-s-default.CodeMirror-wrap")[0].style.borderRight = "none";
+                }
+                //TODO 添加兼容
+                // (function() {
+                //     var hm = document.createElement("script");
+                //     hm.src = "http://localhost/wordpress/wp-content/plugins/WP-Editor.MD/jQuery/jquery.min.js?ver=3.5";
+                //     var s = document.getElementsByTagName("head")[0];
+                //     s.parentNode.insertBefore(hm, s);
+                // })();
             }
         </script>
 		<?php

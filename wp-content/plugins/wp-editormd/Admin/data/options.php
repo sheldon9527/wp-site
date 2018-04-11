@@ -14,16 +14,6 @@ $options['support_comment'] = array(
 	'description' => '<a class="support_comment" href="' . admin_url( 'options-discussion.php#wpcom_publish_comments_with_markdown' ) . '" rel="nofollow" target="_blank">' . __( 'Go', 'editormd' ) . '</a>'
 );
 
-$options['editormd_library'] = array(
-	'type'        => 'text',
-	'page'        => 'wpeditormd',
-	'tab'         => 'basic',
-	'title'       => __( 'Editor.md Library', 'editormd' ),
-	'subtitle'    => __( '', 'editormd' ),
-	'description' => __( 'Please create a CDN static acceleration file', 'editormd' ),
-	'default'     => WP_EDITORMD_PLUGIN_URL . '/Editor.md'
-);
-
 $options['jquery_library'] = array(
 	'type'        => 'text',
 	'page'        => 'wpeditormd',
@@ -431,7 +421,14 @@ $options['other_one'] = array(
 	'title'       => __( 'Use documentation', 'editormd' ),
 	'page'        => 'wpeditormd',
 	'tab'         => 'other',
-	'description' => '<a class="other_one" href="' . WP_EDITORMD_PLUGIN_URL . '/Document/use-zh_CN.php' . '" rel="nofollow" target="_blank">' . __( 'Go', 'editormd' ) . '</a>'
+	'description' => '<a class="other_one" href="https://github.com/JaxsonWang/WP-Editor.MD/blob/master/Document/use-zh_CN.md" rel="nofollow" target="_blank">' . __( 'Go', 'editormd' ) . '</a>'
+);
+
+$options['other_two'] = array(
+    'title'       => __( '加入QQ交流群', 'editormd' ),
+    'page'        => 'wpeditormd',
+    'tab'         => 'other',
+    'description' => '<a class="other_one" href="//shang.qq.com/wpa/qunwpa?idkey=b002f812688440a89bbdb2c42798566b3fef29edafc30601357f4e704a8de567" rel="nofollow" target="_blank">' . __( 'Go', 'editormd' ) . '</a>'
 );
 
 // Register options

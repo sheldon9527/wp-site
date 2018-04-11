@@ -1,10 +1,10 @@
-﻿=== WP Editor.MD ===
+=== WP Editor.md ===
 Contributors: 淮城一只猫
 Donate link: https://iiong.com/
 Tags: Edit,Markdown,Markdown Edit,Jetpack
-Requires at least: 3.4
-Tested up to: 4.8.2
-Stable tag: 3.4
+Requires at least: 4.1
+Tested up to: 4.9.4
+Stable tag: 4.1
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -87,6 +87,45 @@ Empty content is the default highlight library, Go to [highlightjs] (https://hig
 3. Editor.md Interface - Full Screen Mode
 
 == Changelog ==
+
+= 4.1 =
+
+* 修复多行公式转义失败的问题
+
+= 4.0 =
+
+* 增强xss安全性
+* 修复关闭同步滚动后输入内容右侧不更新的问题
+* 修复关闭同步滚动后输入内容右侧滚动条跳转的问题
+* 修复上个版本有几率公式失效的问题
+* 修复编辑器marked重要漏洞
+* 优化公式/时序(序列)图/流程图逻辑
+* 优化列表语法逻辑 @感谢未知朋友修改
+* 升级Underscore版本为1.8.3
+* 升级Marked版本为0.3.17
+* 升级Sequence Diagram版本为2.0.1
+* 升级Raphael版本为2.2.7
+* 升级FlowChart版本为1.10.0
+* 升级Katex版本为0.9.0
+* 升级Emojify.js版本为1.1.0
+
+= 3.8 =
+
+* 不可描述的修复
+
+= 3.7 =
+
+* 修复Katex逻辑小于号失效
+
+= 3.6 =
+
+* 兼容新版本Jetpack（新建文章出现500的错误）
+* 修复Jetpack核心问题
+
+= 3.5 =
+
+* 升级一些库文件
+* 修复一些问题
 
 = 3.4 =
 
