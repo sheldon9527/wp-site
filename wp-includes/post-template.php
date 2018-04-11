@@ -1675,7 +1675,7 @@ function get_the_password_form($post = 0)
     $label = 'pwbox-' . (empty($post->ID) ? rand() : $post->ID);
     $output = '<form action="' . esc_url(site_url('wp-login.php?action=postpass', 'login_post')) . '" class="post-password-form" method="post">
 	<p>' . __('This content is password protected. To view it please enter your password below:') . '</p>
-	<p><label for="' . $label . '">' . __('Password:') . ' <input name="post_password" id="' . $label . '" type="password" size="20" /> 扫码支付2元获取密码！！！ </label> <input type="submit" name="Submit" value="' . esc_attr_x('Enter', 'post password form') . '" /></p></form>
+	<p><label for="' . $label . '">' . __('Password:') . ' <input name="post_password" id="' . $label . '" type="password" size="20" /> 扫码获取密码！！！ </label> <input type="submit" name="Submit" value="' . esc_attr_x('Enter', 'post password form') . '" /></p></form>
 ';
 
     /**
