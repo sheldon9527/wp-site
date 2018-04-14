@@ -28,7 +28,7 @@
      imagegif($im, $resultNamePath);//输出图片
     ?>
 </div>
-<div style="text-align: center;">
+<div style="text-align: center;background-color:#FFFFFF;">
 	<img src="/love.jpg"/>
 </div>
 <?php get_footer(); ?>
