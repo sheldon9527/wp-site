@@ -10,7 +10,7 @@ $webSocket->callbackNewData = function ($connect, $data) use ($cu){
     if(!trim($data)){
       $msg ='欢迎来闲聊！！！';
     }else {
-        $content = $cu->get('http://cx.beikexi.com/api/chats', ['title'=>trim($data)]);
+        $content = $cu->get('http://www.helshe.com:8080/api/chats', ['title'=>trim($data)]);
         $content = json_decode($content,true);
         if(empty($content)){
           $msg ='你太调皮了！！！超出我的范围啦';
