@@ -15,7 +15,11 @@ $webSocket->callbackNewData = function ($connect, $data) use ($cu){
         if(empty($content)){
           $msg ='你太调皮了！！！超出我的范围啦';
         }else {
-          $msg = $content['title'];
+          if(array_key_exists('title', $content)){
+            $msg = $content['title'];
+          }else {
+            $msg ='没有任何信息，可能出现错误,';
+          }
         }
     }
     $message = array(
