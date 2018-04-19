@@ -5,7 +5,7 @@ require_once (dirname(__FILE__).'/MeepoPS/MeepoPS/index.php');
 //使用WebSocket协议传输的Api类
 $webSocket = new \MeepoPS\Api\Websocket('0.0.0.0', '19910');
 $webSocket->callbackNewData = function ($connect, $data){
-    $msg = trim($data);
+    $msg = '收到消息:' . trim($data);
     $message = array(
         'errno' => 0, 'errmsg' => 'OK', 'data' => array(
             'content' => $msg, 'create_time' => date('Y-m-d H:i:s'),
