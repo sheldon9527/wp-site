@@ -114,7 +114,7 @@ li.time strong{
     width: 100%;
     height: 90px;
     background: #ddd;
-    position: absolute;
+    /* position: absolute; */
     left: 0;
     bottom: 0;
 }
