@@ -10,7 +10,7 @@ xxim.renode = function(){
 };
 var ws = new WebSocket('ws://127.0.0.1:19910');
 ws.onopen = function() {
-     ws.send('欢迎来闲聊！！！');
+     ws.send('');
 };
 //聊天窗口
 xxim.popchat = function(){
