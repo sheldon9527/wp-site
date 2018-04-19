@@ -18,7 +18,7 @@ $webSocket->callbackNewData = function ($connect, $data) use ($cu){
           if(array_key_exists('title', $content)){
             $msg = $content['title'];
           }else {
-            $msg ='没有任何信息，可能出现错误,';
+            $msg ='没有查询任何信息，可能出现错误,';
           }
         }
     }
