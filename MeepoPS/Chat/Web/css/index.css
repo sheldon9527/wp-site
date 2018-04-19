@@ -59,13 +59,13 @@
 .content ul{
     padding: 0 20px;
 }
-.content ul li{
+.content ul b{
     width: 100%;
     position: relative;
     margin-bottom: 10px;
     font-size: 14px;
 }
-.content ul li span{
+.content ul b span{
     position: absolute;
     width: 0;
     height: 0;
@@ -75,14 +75,15 @@
     border-right: 7px solid #fff;
     top: 15px;
 }
-.content ul li span.arrow{
+.content ul b span.arrow{
     left: -7px;
 }
-.content ul li.layim_chateme span{
-    border-left: 7px solid #34BBF9;
+.content ul a.layim_chateme span{
+    border-right: 7px solid #34BBF9;
     border-right: 0;
     right: -7px;
 }
+
 .content .layim_chatsay{
     max-width: 80%;
     padding: 12px 18px 10px;
