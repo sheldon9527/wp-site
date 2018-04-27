@@ -4,7 +4,15 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=10,IE=9,IE=8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
-	
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-8711825449314141",
+    enable_page_level_ads: true
+  });
+</script>
+
 <title><?php wp_title('-', true, 'right');
 echo get_option('blogname');
 if (is_home()) {
@@ -68,20 +76,20 @@ if (dopt('d_headcode_b')) {
             global $current_user;
             get_currentuserinfo();
             $uid = $current_user->ID;
-            $u_name = get_user_meta($uid, 'nickname', true);
-        ?>
+            $u_name = get_user_meta($uid, 'nickname', true); ?>
             <div class="pull-right">
                 <?php if (is_user_logged_in()) {
-                    echo '<i class="fa fa-user"></i> '.$u_name.' &nbsp; ';
-                    echo ' &nbsp; &nbsp; <i class="fa fa-power-off"></i> ';
-} else {
-    echo '<i class="fa fa-user"></i> ';
-};
-wp_loginout(); ?>
+                echo '<i class="fa fa-user"></i> '.$u_name.' &nbsp; ';
+                echo ' &nbsp; &nbsp; <i class="fa fa-power-off"></i> ';
+            } else {
+                echo '<i class="fa fa-user"></i> ';
+            };
+            wp_loginout(); ?>
             </div>
-        <?php                                                                                                                                                                                                                         } ?>
+        <?php 
+        } ?>
         <div class="toptip"><strong class="text-success"><i class="fa fa-volume-up"></i> </strong> <?php echo dopt('d_tui'); ?></div>
     </div>
     <?php if (dopt('d_adsite_01_b')) {
-        echo '<div class="banner banner-site">'.dopt('d_adsite_01').'</div>';
-} ?>
+            echo '<div class="banner banner-site">'.dopt('d_adsite_01').'</div>';
+        } ?>
