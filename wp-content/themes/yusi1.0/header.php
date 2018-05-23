@@ -86,7 +86,8 @@ if (dopt('d_headcode_b')) {
             };
             wp_loginout(); ?>
             </div>
-        <?php 
+        <?php
+
         } ?>
         <div class="toptip"><strong class="text-success"><i class="fa fa-volume-up"></i> </strong> <?php echo dopt('d_tui'); ?></div>
     </div>
